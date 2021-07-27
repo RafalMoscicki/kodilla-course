@@ -35,15 +35,12 @@ public class CollectionTestSuite {
     @Test
     void testOddNumbersExterminatorNormalList() {
         //Given
-        Integer numbers[] = new Integer[] {5, 7, 0, 10, 12, 1};
+        List<Integer> numbers = Arrays.asList(5, 7, 0, 10, 12, 1);
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        List<Integer> result = oddNumbersExterminator.exterminate(Arrays.asList(numbers));
+        List<Integer> result = oddNumbersExterminator.exterminate(numbers);
 
         //When
-        List<Integer> expectedResult = new ArrayList<>();
-        expectedResult.add(0);
-        expectedResult.add(10);
-        expectedResult.add(12);
+        List<Integer> expectedResult = Arrays.asList(0, 10, 12);
 
         //Then
         Assertions.assertEquals(result, expectedResult);
