@@ -17,4 +17,6 @@ public class WeatherForecastTestSuite {
         //Then
         Assertions.assertEquals(5, quantityOfSensors);
     }
+
+
 }
