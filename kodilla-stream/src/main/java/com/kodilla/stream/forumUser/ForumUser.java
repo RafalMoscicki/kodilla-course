@@ -4,52 +4,52 @@ import java.time.LocalDate;
 
 public class ForumUser {
 
-    private final int userId;
-    private final String userName;
-    private final char userSex;
-    private final LocalDate userBirthDate;
-    private final int userPosts;
+    private final int iD;
+    private final String name;
+    private final char sex;
+    private final LocalDate birthDate;
+    private final int posts;
 
     public ForumUser(final int userId,
                      final String userName,
                      final char userSex,
                      final LocalDate userBirthDate,
                      final int userPosts) {
-        this.userId = userId;
-        this.userName = userName;
-        this.userSex = userSex;
-        this.userBirthDate = userBirthDate;
-        this.userPosts = userPosts;
+        this.iD = userId;
+        this.name = userName;
+        this.sex = userSex;
+        this.birthDate = userBirthDate;
+        this.posts = userPosts;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getiD() {
+        return iD;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public char getUserSex() {
-        return userSex;
+    public char getSex() {
+        return sex;
     }
 
-    public LocalDate getUserBirthDate() {
-        return userBirthDate;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public int getUserPosts() {
-        return userPosts;
+    public int getPosts() {
+        return posts;
     }
 
     @Override
     public String toString() {
         return "ForumUser{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", userSex=" + userSex +
-                ", userBirthDate=" + userBirthDate +
-                ", userPosts=" + userPosts +
+                "userId=" + iD +
+                ", userName='" + name + '\'' +
+                ", userSex=" + sex +
+                ", userBirthDate=" + birthDate +
+                ", userPosts=" + posts +
                 '}';
     }
 }

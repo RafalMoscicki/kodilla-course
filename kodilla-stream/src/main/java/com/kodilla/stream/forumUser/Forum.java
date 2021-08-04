@@ -23,7 +23,7 @@ public final class Forum {
                 LocalDate.of(1985, 2, 16), 30));
     }
 
-    public List<ForumUser> getForumUserList() {
+    public List<ForumUser> getUsers() {
         return new ArrayList<>(forumUserList);
     }
 }
