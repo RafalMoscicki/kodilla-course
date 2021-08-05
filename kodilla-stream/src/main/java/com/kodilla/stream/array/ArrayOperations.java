@@ -12,7 +12,7 @@ public interface ArrayOperations {
         return IntStream.range(0, numbers.length)
                 .map(index -> numbers[index])
                 .average()
-                .orElse(Double.NaN);
+                .orElse(0.0);
     }
 }
 
