@@ -9,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 apply plugin: 'application'
-mainClassName = 'com.kodilla.exception.nullpointer.NullPointerExceptionRunner'
+mainClassName = 'com.kodilla.exception.main.ExceptionModuleRunner'
 
 repositories {
 	mavenCentral()

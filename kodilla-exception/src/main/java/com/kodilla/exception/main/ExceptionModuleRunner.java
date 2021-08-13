@@ -1,9 +1,9 @@
 package com.kodilla.exception.main;
 
-import com.kodilla.exception.io.FileReader;
-import com.kodilla.exception.io.FileReaderException;
-import com.kodilla.exception.io.FileReaderWithoutHandling;
 import com.kodilla.exception.test.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ExceptionModuleRunner {
 
@@ -28,11 +28,25 @@ public class ExceptionModuleRunner {
 //        ExceptionHandling exceptionHandling = new ExceptionHandling();
 //        exceptionHandling.handle(10, 5);
 
-        UserInputChecker userInputChecker = new UserInputChecker();
+//        UserInputChecker userInputChecker = new UserInputChecker();
+//        try {
+//            System.out.println(userInputChecker.scan("7"));
+//        } catch (InvalidFormatException | NumberOutOfRangeException e) {
+//            e.printStackTrace();
+//        }
+
+        Map<String, Boolean> flights = new HashMap<>();
+        flights.put("Warsaw", true);
+        flights.put("Barcelona", true);
+        flights.put("lodz", false);
+
+        Flight flight = new Flight("Warsaw", "Barcelona");
+        FlightProcessor flightProcessor = new FlightProcessor(flights);
         try {
-            System.out.println(userInputChecker.scan("7"));
-        } catch (InvalidFormatException | NumberOutOfRangeException e) {
+            System.out.println(flightProcessor.findFlight(flight));
+        } catch (RouteNotFoundException e) {
             e.printStackTrace();
         }
+
     }
 }
