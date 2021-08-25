@@ -12,6 +12,10 @@ public final class TaskList {
     }
 
     public List<String> getTasks() {
-        return tasks;
+        return new ArrayList<>(tasks);
+    }
+
+    public void getTask(String task) {
+        tasks.add(task);
     }
 }

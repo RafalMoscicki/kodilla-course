@@ -3,14 +3,8 @@ package com.kodilla.spring.portfolio;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class BoardTestSuite {
@@ -26,7 +20,7 @@ public class BoardTestSuite {
         board.addTaskToToDoList("Do one more kodilla module");
 
         //Then
-        System.out.println(board.getToDoList().getTasks());
+        assertTrue(board.getToDoList().getTasks().contains("Do one more kodilla module"));
     }
 
     @Test
@@ -37,7 +31,7 @@ public class BoardTestSuite {
         board.addTaskToInProgressList("Doing kodilla module 10.3");
 
         //Then
-        System.out.println(board.getInProgressList().getTasks());
+        assertTrue(board.getInProgressList().getTasks().contains("Doing kodilla module 10.3"));
     }
 
     @Test
@@ -48,6 +42,6 @@ public class BoardTestSuite {
         board.addTaskToDoneList("Finally im done with this task");
 
         //Then
-        System.out.println(board.getDoneList().getTasks());
+        assertTrue(board.getDoneList().getTasks().contains("Finally im done with this task"));
     }
 }
