@@ -15,7 +15,7 @@ public final class Book {
     }
 
     public Book cloneBook() {
-        return new Book(getTitle(), getAuthor(), getPublicationDate());
+        return new Book(title, author, publicationDate);
     }
 
     public String getTitle() {
