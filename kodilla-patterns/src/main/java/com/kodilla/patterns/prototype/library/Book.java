@@ -14,6 +14,10 @@ public final class Book {
         this.publicationDate = publicationDate;
     }
 
+    public Book cloneBook() {
+        return new Book(getTitle(), getAuthor(), getPublicationDate());
+    }
+
     public String getTitle() {
         return title;
     }
