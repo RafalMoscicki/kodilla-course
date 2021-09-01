@@ -2,40 +2,29 @@ package com.kodilla.patterns.builder.bigmac;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
+import static com.kodilla.patterns.builder.bigmac.Bun.SESAME;
+import static com.kodilla.patterns.builder.bigmac.Ingredient.*;
+import static com.kodilla.patterns.builder.bigmac.Ingredient.CHEESE;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BigmacTestSuite {
 
     @Test
     void testBigmacBuilder() {
-        //Given
+        //Given When
         Bigmac bigmac = new Bigmac.BigmacBuilder()
-                .ingredients("onion")
-                .ingredients("cheese")
-                .ingredients("chilli")
-                .bun("sesame")
-                .sauce("barbecue")
-                .burgers("2")
+                .ingredient(ONION)
+                .ingredient(CHEESE)
+                .ingredient(CHILLI)
+                .bun(SESAME)
+                .sauce(Sauce.BARBECUE)
+                .burgers(2)
                 .build();
-        //When
-        int howManyIngredients = bigmac.getIngredients().size();
         //Then
-        assertEquals(3, howManyIngredients);
-    }
-
-    @Test
-    void testIfIngredientNotAvailable() {
-        try {
-            Bigmac bigmac = new Bigmac.BigmacBuilder()
-                    .ingredients("onion")
-                    .ingredients("cheese")
-                    .ingredients("tomato")
-                    .bun("sesame")
-                    .burgers("2")
-                    .build();
-            fail();
-        } catch (IllegalStateException e) {
-            assertEquals("tomato not available", e.getMessage());
-        }
+        assertEquals(Arrays.asList(ONION, CHEESE, CHILLI), bigmac.getIngredients());
+        assertEquals(2, bigmac.getBurgers());
+        assertEquals(SESAME, bigmac.getBun());
     }
 }

@@ -5,12 +5,12 @@ import java.util.List;
 
 public final class Bigmac {
 
-    private final String bun;
-    private final String burgers;
-    private final String sauce;
-    private final List<String> ingredients;
+    private final Bun bun;
+    private final int burgers;
+    private final Sauce sauce;
+    private final List<Ingredient> ingredients;
 
-    public Bigmac(final String bun, final String burgers, final String sauce, final List<String> ingredients) {
+    public Bigmac(final Bun bun, final int burgers, final Sauce sauce, final List<Ingredient> ingredients) {
         this.bun = bun;
         this.burgers = burgers;
         this.sauce = sauce;
@@ -18,38 +18,29 @@ public final class Bigmac {
     }
 
     public static class BigmacBuilder {
-        private String bun;
-        private String burgers;
-        private String sauce;
-        private final List<String> ingredients = new ArrayList<>();
-        private final IngredientsChecker ingredientsChecker = new IngredientsChecker();
+        private Bun bun;
+        private int burgers;
+        private Sauce sauce;
+        private final List<Ingredient> ingredients = new ArrayList<>();
 
-        public BigmacBuilder bun(String bun) {
+        public BigmacBuilder bun(Bun bun) {
             this.bun = bun;
             return this;
         }
 
-        public BigmacBuilder burgers(String burgers) {
+        public BigmacBuilder burgers(int burgers) {
             this.burgers = burgers;
             return this;
         }
 
-        public BigmacBuilder sauce(String sauce) {
-            if (ingredientsChecker.availableSauce(sauce)) {
-                this.sauce = sauce;
-                return this;
-            } else {
-                throw new IllegalStateException(sauce + " not available");
-            }
+        public BigmacBuilder sauce(Sauce sauce) {
+            this.sauce = sauce;
+            return this;
         }
 
-        public BigmacBuilder ingredients(String ingredient) {
-            if (ingredientsChecker.availableIngredients(ingredient)) {
-                ingredients.add(ingredient);
-                return this;
-            } else {
-                throw new IllegalStateException(ingredient + " not available");
-            }
+        public BigmacBuilder ingredient(Ingredient ingredient) {
+            ingredients.add(ingredient);
+            return this;
         }
 
         public Bigmac build() {
@@ -57,15 +48,15 @@ public final class Bigmac {
         }
     }
 
-    public String getBun() {
+    public Bun getBun() {
         return bun;
     }
 
-    public String getBurgers() {
+    public int getBurgers() {
         return burgers;
     }
 
-    public List<String> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
