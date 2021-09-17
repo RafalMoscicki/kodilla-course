@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
@@ -13,6 +16,9 @@ public class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany() {
@@ -57,6 +63,43 @@ public class CompanyDaoTestSuite {
             companyDao.deleteById(greyMatterId);
         } catch (Exception e) {
             //do nothing
+        }
+    }
+
+    @Test
+    void testRetrieveEmployeesWithName() {
+        //Given
+        Employee employee = new Employee("Pixel", "Ford");
+        employeeDao.save(employee);
+        int id = employee.getId();
+
+        //When
+        List<Employee> names = employeeDao.retrieveEmployeesWithName("Ford");
+
+        //Then
+        try {
+            assertEquals(1, names.size());
+        } finally {
+            employeeDao.deleteById(id);
+        }
+    }
+
+    @Test
+    void testRetrieveCompaniesNamesWith3FirstLetters() {
+        //Given
+        Company company = new Company("Bajtus");
+        companyDao.save(company);
+        int id = company.getId();
+
+        //When
+        List<Company> result = companyDao.retrieveCompaniesNamesWith3FirstLetters("Baj");
+
+        //Then
+        try {
+            assertEquals(result.size(), 1);
+            assertEquals(result.get(0).getName(), "Bajtus");
+        } finally {
+            companyDao.deleteById(id);
         }
     }
 }
