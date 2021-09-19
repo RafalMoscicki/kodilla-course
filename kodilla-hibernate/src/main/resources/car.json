@@ -1,0 +1,23 @@
+{
+  "name": "Car",
+  "brand": "BMW",
+  "seats": [
+    {
+      "material": "abc",
+      "color": "red"
+    },
+    {
+      "material": "adb",
+      "color": "blue"
+    },
+    {
+      "material": "ghj",
+      "color": "pink"
+    },
+    {
+      "material": "klm",
+      "color": "green"
+    }
+  ],
+  "engine": 2.0
+}
