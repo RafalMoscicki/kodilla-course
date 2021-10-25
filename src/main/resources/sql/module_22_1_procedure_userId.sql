@@ -1,0 +1,31 @@
+CREATE PROCEDURE UsersList(userid INT)
+BEGIN
+    IF userid > 0 THEN
+        SELECT * FROM READERS
+        WHERE READER_ID = userid;
+    ELSE
+        SELECT 'id must be > 0';
+    END IF;
+END
+
+DELIMITER ;
+
+CALL UsersList(1);
+
+CREATE FUNCTION GetUserById(userid INT) RETURNS VARCHAR(20) DETERMINISTIC
+BEGIN
+    DECLARE RESULT VARCHAR(20) DEFAULT 'User not found';
+    IF userid <= 0 THEN
+        SET RESULT = 'ID must be > 0';
+    ELSE
+        SELECT LASTNAME INTO RESULT FROM readers
+        WHERE READER_ID = userid;
+    END IF;
+    RETURN RESULT;
+END
+
+SELECT GetUserById(1) AS LEVEL;
+
+DROP PROCEDURE IF EXISTS UsersList;
+
+DROP FUNCTION IF EXISTS GetUserById;
